@@ -36,6 +36,7 @@ class Edificio(Resource):
             return response_template.not_found('El edificio no fue encontrado')
         edificio.nombre = args.nombre
         edificio.pisos = args.pisos
+        edificio.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
 
         db.session().commit()
         return response_template.succesful({},"Edificio modificado", 204 )
