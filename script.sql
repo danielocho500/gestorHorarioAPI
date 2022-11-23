@@ -15,7 +15,7 @@ insert into ROL (nombre) values ('Administrador');
 CREATE TABLE Usuario (
 	uid int NOT NULL auto_increment,
     correo varchar(100) NOT NULL,
-    pass varchar(200) NOT NULL,
+    password varchar(200) NOT NULL,
     isActivo tinyint NOT NULL,
     primerNombre varchar(100)  NOT NULL,
 	segundoNombre varchar(100),
@@ -25,29 +25,10 @@ CREATE TABLE Usuario (
     fechaNacimiento datetime NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
+    claveEmpleado varchar(100) NULL,
+    matricula varchar(100) NULL,
     PRIMARY KEY (uid),
     FOREIGN KEY (rol) REFERENCES Rol(id)
-);
-
-CREATE TABLE PROFESOR (
-	claveEmpleado varchar(100) NOT NULL,
-    uid int NOT NULL,
-    primary key(claveEmpleado),
-    foreign key(uid) REFERENCES Usuario(uid)
-);
-
-CREATE TABLE ESTUDIANTE (
-	matricula varchar(100) NOT NULL,
-    uid int NOT NULL,
-    primary key(matricula),
-    foreign key(uid) REFERENCES Usuario(uid)
-);
-
-CREATE TABLE Administrador (
-	claveEmpleado varchar(100) NOT NULL,
-    uid int NOT NULL,
-    primary key(claveEmpleado),
-    foreign key(uid) REFERENCES Usuario(uid)
 );
 
 CREATE TABLE Periodo (
@@ -72,13 +53,13 @@ create table Grupo (
 
 create table estudiantePeriodo (
 	id int NOT NULL auto_increment,
-    idEstudiante varchar(100) NOT NULL,
+    idEstudiante int NOT NULL,
 	idGrupo int NOT NULL,
     idPeriodo int NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id),
-    foreign key(idEstudiante) references Estudiante(matricula),
+    foreign key(idEstudiante) references Usuario(uid),
 	foreign key(idGrupo) references Grupo(id),
 	foreign key(idPeriodo) references Periodo(id)
 );
@@ -157,12 +138,12 @@ create table materiaArea (
 
 create table Clase (
 	nrc varchar(20) NOT NULL,
-    idProfesor varchar(100) NOT NULL,
+    idProfesor int NOT NULL,
     idMateria int NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(nrc),
-    foreign key(idProfesor) references profesor(claveEmpleado),
+    foreign key(idProfesor) references Usuario(uid),
     foreign key(idMateria) references materia(id)  
 );
 
@@ -178,4 +159,8 @@ create table Acta (
 	primary key(id),
     foreign key(idEstPeriodo) references estudiantePeriodo(id),
     foreign key(nrc) references Clase(nrc)
+);
+
+create table token (
+	value varchar(200) NOT NULL 
 );

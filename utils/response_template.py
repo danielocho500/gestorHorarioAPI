@@ -15,3 +15,13 @@ class response_template():
             'ok': True,
             'msg': msg
         }, 404
+    def bad_request(msg):
+        return {
+            'ok': True,
+            'msg': msg
+        }, 400
+    def not_authorized(msg):
+        return {
+            'ok': True,
+            'msg': msg
+        }, 401
