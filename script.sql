@@ -115,7 +115,6 @@ create table horario(
 create table area(
 	id int NOT NULL auto_increment,
     nombre varchar(100),
-    semestre int NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id)
@@ -124,6 +123,7 @@ create table area(
 create table Materia (
 	id int NOT NULL auto_increment,
     nombre varchar(200) NOT NULL,
+    semestre int NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id)
