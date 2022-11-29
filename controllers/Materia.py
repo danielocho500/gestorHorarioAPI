@@ -39,7 +39,12 @@ class Materia(Resource):
         materia.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
 
         db.session().commit()
-        return response_template.succesful({},"Materia modificada", 204 )
+        data = {
+            'id': materia.id,
+            'nombre': materia.nombre,
+            'semestre': materia.semestre
+        }
+        return response_template.succesful(data,"Materia modificada", 204 )
     def delete(self, idMateria):
         try:
             materia = db.get_or_404(Materia_Model, idMateria)
@@ -65,7 +70,12 @@ class Materias(Resource):
         
         db.session.commit()
 
-        return response_template.created(msg='Materia creada')
+        data = {
+            'id': materia.id,
+            'nombre': materia.nombre,
+            'semestre': materia.semestre
+        }
+        return response_template.succesful(data, 'Materia creada', 200)
     
     def get(self):
         materias_models = db.session.execute(db.select(Materia_Model)).scalars().fetchall()

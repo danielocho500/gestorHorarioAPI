@@ -130,8 +130,10 @@ create table Materia (
 );
 
 create table materiaArea (
+	id int NOT NULL auto_increment,
 	idMateria int NOT NULL,
     idArea int NOT NULL,
+    primary key(id),
     foreign key(idMateria) references Materia(id) ON DELETE CASCADE,
     foreign key(idArea) references area(id) ON DELETE CASCADE
 );
