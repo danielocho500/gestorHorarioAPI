@@ -1,6 +1,9 @@
 import time    
-from flask_restful import Resource, reqparse, abortsalon_post_args
+from flask_restful import Resource, reqparse
+import datetime
+import json
 
+from helpers.validateTime import regexTime
 from models.Horario import Horario_Model
 from models.DiaSemana import DiaSemana_Model
 from models.Salon import Salon_Model
@@ -10,16 +13,16 @@ from utils.response_template import response_template
 #abort(404, message="video id is not valid")
 
 horario_patch_args = reqparse.RequestParser()
-horario_patch_args.add_argument("idSemana", type=str, help="Id de la semana", required = True)
+horario_patch_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
 horario_patch_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
-horario_patch_args.add_argument("horarioInicio", type=int, help="Horario de inicio", required = True)
-horario_patch_args.add_argument("horarioFin", type=int, help="Horario de fin", required = True)
+horario_patch_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
+horario_patch_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
 
 horario_post_args = reqparse.RequestParser()
-horario_post_args.add_argument("idSemana", type=str, help="Id de la semana", required = True)
+horario_post_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
 horario_post_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
-horario_post_args.add_argument("horarioInicio", type=int, help="Horario de inicio", required = True)
-horario_post_args.add_argument("horarioFin", type=int, help="Horario de fin", required = True)
+horario_post_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
+horario_post_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
 
 class Horario(Resource):
     def get(self, idHorario):
@@ -27,12 +30,13 @@ class Horario(Resource):
             horario = db.get_or_404(Horario_Model, idHorario)
         except:
             return response_template.not_found('El horario no fue encontrado')
+
         data = {
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
-            'horarioInicio': horario.horarioInicio,
-            'horarioFin': horario.horarioFin
+            'horanicio': str(horario.horaInicio),
+            'horaFin': str(horario.horaFin)
         }
         return response_template.succesful(data, '', 200)
     def patch(self, idHorario):
@@ -43,8 +47,8 @@ class Horario(Resource):
         except:
             return response_template.not_found('El horario no fue encontrado')
             
-        horario.horarioInicio = args.horarioInicio
-        horario.horarioFin = args.horarioFin
+        horario.horaInicio = args.horarioInicio
+        horario.horaFin = args.horarioFin
         horario.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
 
         db.session().commit()
@@ -72,12 +76,18 @@ class Horarios(Resource):
             db.get_or_404(DiaSemana_Model, args.idSemana)
         except:
             return response_template.not_found('El dia de la semana no fue encontrado')
-        
+
+        if not(regexTime(args.horarioInicio) and regexTime(args.horarioFin)):
+            return response_template.bad_request(msg='Horario incorrecto')
+
+        horarioInicioCadena = datetime.datetime.strptime(args.horarioInicio, '%H:%M').time()
+        horarioFinCadena = datetime.datetime.strptime(args.horarioFin, '%H:%M').time()
+
         horario = Horario_Model(
             idSemana= args.idSemana,
             idSalon= args.idSalon,
-            horarioInicio = args.horarioInicio,
-            horarioFin = args.horarioFin,
+            horaInicio = horarioInicioCadena,
+            horaFin = horarioFinCadena,
             createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
             updatedAt=time.strftime('%Y-%m-%d %H:%M:%S')
         )
@@ -90,45 +100,24 @@ class Horarios(Resource):
     def get(self):
         horarios_models = db.session.execute(db.select(Horario_Model)).scalars().fetchall()
         data = []
-
         for horario in horarios_models:
             data.append({
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
-            'horarioInicio': horario.horarioInicio,
-            'horarioFin': horario.horarioFin
+            'horaInicio': str(horario.horaInicio),
+            'horaFin': str(horario.horaFin)
             })
 
         return response_template.succesful(data=data, msg='', code=200)
-    
-    def get(self, idSemana):
 
-        try:
-            horario = db.get_or_404(Horario_Model, idSemana)
-        except:
-            return response_template.not_found('El horario no fue encontrado')
-        
-        horarios_models = db.session.execute(db.select(Horario_Model).filter(Horario_Model.idSemana == idSemana)).scalars().fetchall()
-        data = []
-
-        for horario in horarios_models:
-            data.append({
-            'idHorario' : horario.id,
-            'idSemana': horario.idSemana,
-            'idSalon': horario.idSalon,
-            'horarioInicio': horario.horarioInicio,
-            'horarioFin': horario.horarioFin
-            })
-
-        return response_template.succesful(data=data, msg='', code=200)
-    
+class HorariosSalon(Resource):
     def get(self, idSalon):
 
         try:
-            horario = db.get_or_404(Horario_Model, idSalon)
+            horario = db.get_or_404(Salon_Model, idSalon)
         except:
-            return response_template.not_found('El horario no fue encontrado')
+            return response_template.not_found('El salon no fue encontrado')
 
         horarios_models = db.session.execute(db.select(Horario_Model).filter(Horario_Model.idSalon == idSalon)).scalars().fetchall()
         data = []
@@ -138,8 +127,8 @@ class Horarios(Resource):
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
-            'horarioInicio': horario.horarioInicio,
-            'horarioFin': horario.horarioFin
+            'horarioInicio': str(horario.horaInicio),
+            'horarioFin': str(horario.horaFin)
             })
 
         return response_template.succesful(data=data, msg='', code=200)

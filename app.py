@@ -10,7 +10,7 @@ from controllers.Login import Login
 from controllers.Materia import Materia, Materias
 from controllers.Area import Area, Areas
 from controllers.DiaSemana import DiaSemana, DiasSemana
-from controllers.Horario import Horario, Horarios
+from controllers.Horario import Horario, Horarios, HorariosSalon
 
 from utils.db import db
 app = Flask(__name__)
@@ -44,6 +44,7 @@ api.add_resource(DiasSemana,"/api/diaSemana")
 
 api.add_resource(Horario, "/api/horario/<int:idHorario>")
 api.add_resource(Horarios,"/api/horario")
+api.add_resource(HorariosSalon, "/api/horario/salon/<int:idSalon>")
 
 if __name__ == "__main__":
     app.run(debug=True)

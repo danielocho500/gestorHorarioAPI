@@ -62,6 +62,7 @@ class Materias(Resource):
         )
 
         db.session.add(materia)
+        
         db.session.commit()
 
         return response_template.created(msg='Materia creada')
