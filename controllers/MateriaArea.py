@@ -52,7 +52,7 @@ class Area(Resource):
         return response_template.succesful({}, "area eliminada", 200)
 
 class MateriaAreas(Resource):
-    def post(self, idArea):
+    def post(self, idArea, idMateria):
         args = materiaArea_post_args.parse_args() 
         
         materiaArea = MateriaArea_Model(

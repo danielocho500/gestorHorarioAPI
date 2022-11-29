@@ -59,9 +59,9 @@ create table estudiantePeriodo (
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id),
-    foreign key(idEstudiante) references Usuario(uid),
-	foreign key(idGrupo) references Grupo(id),
-	foreign key(idPeriodo) references Periodo(id)
+    foreign key(idEstudiante) references Usuario(uid) ON DELETE CASCADE,
+	foreign key(idGrupo) references Grupo(id) ON DELETE CASCADE,
+	foreign key(idPeriodo) references Periodo(id) ON DELETE CASCADE
 );
 
 create table Edificio (
@@ -82,7 +82,7 @@ create table Salon (
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id),
-    foreign key(idEdificio) references Edificio(id)
+    foreign key(idEdificio) references Edificio(id) ON DELETE CASCADE
 );
 
 create table diaSemana(
@@ -108,8 +108,8 @@ create table horario(
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id),
-    foreign key(idSemana) references diaSemana(id),
-    foreign key(idSalon) references Salon(id)
+    foreign key(idSemana) references diaSemana(id) ON DELETE CASCADE,
+    foreign key(idSalon) references Salon(id) ON DELETE CASCADE
 );
 
 create table area(
@@ -132,8 +132,8 @@ create table Materia (
 create table materiaArea (
 	idMateria int NOT NULL,
     idArea int NOT NULL,
-    foreign key(idMateria) references Materia(id),
-    foreign key(idArea) references area(id)
+    foreign key(idMateria) references Materia(id) ON DELETE CASCADE,
+    foreign key(idArea) references area(id) ON DELETE CASCADE
 );
 
 create table Clase (
@@ -143,8 +143,8 @@ create table Clase (
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(nrc),
-    foreign key(idProfesor) references Usuario(uid),
-    foreign key(idMateria) references materia(id)  
+    foreign key(idProfesor) references Usuario(uid) ON DELETE CASCADE,
+    foreign key(idMateria) references materia(id) ON DELETE CASCADE  
 );
 
 create table Acta (
@@ -157,8 +157,8 @@ create table Acta (
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
 	primary key(id),
-    foreign key(idEstPeriodo) references estudiantePeriodo(id),
-    foreign key(nrc) references Clase(nrc)
+    foreign key(idEstPeriodo) references estudiantePeriodo(id) ON DELETE CASCADE,
+    foreign key(nrc) references Clase(nrc) ON DELETE CASCADE
 );
 
 create table token (
