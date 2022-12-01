@@ -6,6 +6,9 @@ from models.Usuario import Usuario_Model
 
 from utils.db import db
 from utils.response_template import response_template
+from flask import request
+from jwt_functions.validate_jwt import validate_jwt
+from jwt_functions import get_info_token
 
 register_post_args = reqparse.RequestParser()
 register_post_args.add_argument("correo", type=str, help="Correo del usuario", required = True)
@@ -22,6 +25,18 @@ register_post_args.add_argument("matricula", type=str, help="matricula", require
 class Register(Resource):
     def post(self):
         args = register_post_args.parse_args() 
+        token = request.headers.get('auth_token')
+
+        if(token == None):
+            return response_template.not_authorized("No hay token en el header (auth_token)")
+        
+        if not (validate_jwt(token)):
+            response_template.not_authorized("token inválido")
+
+        rol = get_info_token.get_rol(token)
+
+        if not (rol == 3):
+            return response_template.not_authorized("No tienes permisos para realizar esta acción")
 
         query = db.session.query(Usuario_Model).filter_by(correo = args.correo).first()
         if (query != None):
@@ -43,6 +58,11 @@ class Register(Resource):
 
 class RegisterUser():
     def registerEstudiante(args):
+        
+        user = db.session.query(Usuario_Model).filter_by(matricula = args.matricula).first()
+        if not(user == None):
+            return response_template.not_authorized('Matricula registrada anteriormente')
+
         usuario = Usuario_Model(
             correo=args.correo,
             password=args.password,
@@ -64,6 +84,11 @@ class RegisterUser():
         return response_template.created("Estudiante creado")
 
     def registerPersonal(args):
+
+        user = db.session.query(Usuario_Model).filter_by(claveEmpleado = args.claveEmpleado).first()
+        if not(user == None):
+            return response_template.not_authorized('Clave registrada anteriormente')
+
         usuario = Usuario_Model(
             correo=args.correo,
             password=args.password,

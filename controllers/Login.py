@@ -1,4 +1,3 @@
-import time    
 from flask_restful import Resource, reqparse
 from sqlalchemy import and_
 
@@ -6,7 +5,8 @@ from models.Usuario import Usuario_Model
 
 from utils.db import db
 from utils.response_template import response_template
-from jwt_functions import generate_jwt
+from jwt_functions.generate_jwt import generate_jwt
+from jwt_functions.validate_jwt import validate_jwt
 
 login_post_args = reqparse.RequestParser()
 login_post_args.add_argument("correo", type=str, help="Correo del usuario", required = True)
@@ -20,7 +20,11 @@ class Login(Resource):
         if (user == None):
             return response_template.not_authorized('Credenciales invalidas')
 
-        token = generate_jwt.generate_jwt(user.uid)
+        print(user.rol)
+
+        token = generate_jwt(user.uid, user.rol)
+
+        validate_jwt(token)
 
         data = {
             'token': token, 
@@ -28,7 +32,8 @@ class Login(Resource):
             'primerNombre': user.primerNombre,
             'segundoNombre': user.segundoNombre,
             'primerApellido': user.primerApellido,
-            'segundoApellido': user.segundoApellido
+            'segundoApellido': user.segundoApellido,
+            'rol': user.rol
         }
         
         if(user.rol == 1):

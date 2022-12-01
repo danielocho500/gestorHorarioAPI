@@ -1,15 +1,12 @@
 import jwt
 from decouple import config
-from models.Token import Token_Model
-from utils.db import db
+from datetime import datetime, timedelta
 
-def generate_jwt(id):
-    encoded = jwt.encode({"id": id}, config("JWT_PASS"), algorithm="HS256")
-    token = Token_Model(
-        value=encoded
-    )
+def generate_jwt(id, rol):
+    token = jwt.encode({
+        "id": id,
+        "rol": rol,
+        "expiration": str(datetime.utcnow() + timedelta(hours=3))
+    }, config("JWT_PASS"), algorithm="HS256")
 
-    db.session.add(token)
-    db.session.commit()
-
-    return encoded
+    return token
