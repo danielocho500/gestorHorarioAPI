@@ -1,9 +1,10 @@
 import time    
-from flask_restful import Resource, reqparse
 import datetime
 import json
 
-from helpers.validateTime import regexTime
+from sqlalchemy import and_
+from flask_restful import Resource, reqparse
+from helpers.validateTime import regexTime, is_time_between
 from models.Horario import Horario_Model
 from models.DiaSemana import DiaSemana_Model
 from models.Salon import Salon_Model
@@ -46,7 +47,35 @@ class Horario(Resource):
             horario = db.get_or_404(Horario_Model, idHorario)
         except:
             return response_template.not_found('El horario no fue encontrado')
-            
+
+        try:
+            db.get_or_404(Salon_Model, args.idSalon)
+        except:
+            return response_template.not_found('El salon no fue encontrado')
+
+        try:
+            db.get_or_404(DiaSemana_Model, args.idSemana)
+        except:
+            return response_template.not_found('El dia de la semana no fue encontrado')
+
+        if not(regexTime(args.horarioInicio) and regexTime(args.horarioFin)):
+            return response_template.bad_request(msg='Horario incorrecto')
+    
+        horarioInicioCadena = datetime.datetime.strptime(args.horarioInicio, '%H:%M').time()
+        horarioFinCadena = datetime.datetime.strptime(args.horarioFin, '%H:%M').time()
+
+        if horarioInicioCadena == horarioFinCadena:
+            return response_template.bad_request(msg='No se puede iniciar y terminar en la misma hora')
+
+        horarios_models = db.session.execute(db.select(Horario_Model).filter(and_(Horario_Model.idSalon == args.idSalon ,Horario_Model.idSemana == args.idSemana, Horario_Model.id != idHorario))).scalars().fetchall()
+        checarHorario = None
+        for horarioCoincidentes in horarios_models:
+            checarHorario = is_time_between(horarioCoincidentes.horaInicio, horarioCoincidentes.horaFin, horarioFinCadena, horarioInicioCadena)
+            if checarHorario:
+                return response_template.bad_request(msg='Hora no valido. Existe choque de horarios') 
+
+        horario.idSemana = args.idSemana
+        horario.idSalon = args.idSalon
         horario.horaInicio = args.horarioInicio
         horario.horaFin = args.horarioFin
         horario.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -82,6 +111,16 @@ class Horarios(Resource):
 
         horarioInicioCadena = datetime.datetime.strptime(args.horarioInicio, '%H:%M').time()
         horarioFinCadena = datetime.datetime.strptime(args.horarioFin, '%H:%M').time()
+
+        if horarioInicioCadena == horarioFinCadena:
+            return response_template.bad_request(msg='No se puede iniciar y terminar en la misma hora')
+
+        horarios_models = db.session.execute(db.select(Horario_Model).filter(and_(Horario_Model.idSalon == args.idSalon ,Horario_Model.idSemana == args.idSemana))).scalars().fetchall()
+        checarHorario = None
+        for horarioCoincidentes in horarios_models:
+            checarHorario = is_time_between(horarioCoincidentes.horaInicio, horarioCoincidentes.horaFin, horarioFinCadena, horarioInicioCadena)
+            if checarHorario:
+                return response_template.bad_request(msg='Hora no valido. Existe choque de horarios')
 
         horario = Horario_Model(
             idSemana= args.idSemana,
