@@ -24,7 +24,7 @@ class Area(Resource):
             'nombre': area.nombre,
         }
         return response_template.succesful(data, '', 200)
-    def patch(self, idArea):
+    def put(self, idArea):
         args = area_patch_args.parse_args()
 
         try:

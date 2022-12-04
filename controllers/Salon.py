@@ -33,7 +33,7 @@ class Salon(Resource):
             'totalCupo': salon.totalCupo
         }
         return response_template.succesful(data, '', 200)
-    def patch(self, idSalon):
+    def put(self, idSalon):
         args = salon_patch_args.parse_args()
 
         try:

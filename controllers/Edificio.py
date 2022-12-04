@@ -27,7 +27,7 @@ class Edificio(Resource):
             'pisos': edificio.pisos
         }
         return response_template.succesful(data, '', 200)
-    def patch(self, idEdificio):
+    def put(self, idEdificio):
         args = edificio_patch_args.parse_args()
 
         try:

@@ -18,7 +18,7 @@ materiaArea_post_args.add_argument("idArea", type=int, help="Id de la materia", 
 materiaArea_post_args.add_argument("idMateria", type=int, help="Id del semestre", required = True)
 
 class MateriaArea(Resource):
-    def patch(self, idMateria):
+    def put(self, idMateria):
         args = materiaArea_patch_args.parse_args()
 
         try:

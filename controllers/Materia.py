@@ -27,7 +27,7 @@ class Materia(Resource):
             'semestre': materia.semestre
         }
         return response_template.succesful(data, '', 200)
-    def patch(self, idMateria):
+    def put(self, idMateria):
         args = materia_patch_args.parse_args()
 
         try:

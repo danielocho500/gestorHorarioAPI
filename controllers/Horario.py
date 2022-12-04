@@ -40,7 +40,7 @@ class Horario(Resource):
             'horaFin': str(horario.horaFin)
         }
         return response_template.succesful(data, '', 200)
-    def patch(self, idHorario):
+    def put(self, idHorario):
         args = horario_patch_args.parse_args()
 
         try:
