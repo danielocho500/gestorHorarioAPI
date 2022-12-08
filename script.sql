@@ -31,6 +31,8 @@ CREATE TABLE Usuario (
     FOREIGN KEY (rol) REFERENCES Rol(id)
 );
 
+Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('admin@admin.com', 'admin', 1, 'admin', 'admin', 3,NOW(),NOW(),NOW(),'admin');
+
 CREATE TABLE Periodo (
 	id int NOT NULL auto_increment,
     fechaInicio date NOT NULL,
@@ -161,8 +163,4 @@ create table Acta (
 	primary key(id),
     foreign key(idEstPeriodo) references estudiantePeriodo(id) ON DELETE CASCADE,
     foreign key(nrc) references Clase(nrc) ON DELETE CASCADE
-);
-
-create table token (
-	value varchar(200) NOT NULL 
 );
