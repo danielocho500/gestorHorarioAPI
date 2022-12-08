@@ -10,6 +10,7 @@ CREATE TABLE Rol (
 
 insert into ROL (nombre) values ('Estudiante');
 insert into ROL (nombre) values ('Profesor');
+insert into ROL (nombre) value ('Secretario');
 insert into ROL (nombre) values ('Administrador');
 
 CREATE TABLE Usuario (
@@ -31,7 +32,7 @@ CREATE TABLE Usuario (
     FOREIGN KEY (rol) REFERENCES Rol(id)
 );
 
-Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('admin@admin.com', 'admin', 1, 'admin', 'admin', 3,NOW(),NOW(),NOW(),'admin');
+Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('admin@admin.com', 'admin', 1, 'admin', 'admin', 4,NOW(),NOW(),NOW(),'admin');
 
 CREATE TABLE Periodo (
 	id int NOT NULL auto_increment,
@@ -101,19 +102,6 @@ Insert into diaSemana(nombre) values('Viernes');
 Insert into diaSemana(nombre) values('Sabado');
 Insert into diaSemana(nombre) values('Domingo');
 
-create table horario(
-	id int NOT NULL auto_increment,
-    idSemana int NOT NULL,
-    idSalon int NOT NULL,
-    horaInicio time NOT NULL,
-    horaFin time NOT NULL,
-    createdAt datetime NOT NULL,
-    updatedAt datetime NOT NULL,
-    primary key(id),
-    foreign key(idSemana) references diaSemana(id) ON DELETE CASCADE,
-    foreign key(idSalon) references Salon(id) ON DELETE CASCADE
-);
-
 create table area(
 	id int NOT NULL auto_increment,
     nombre varchar(100),
@@ -149,6 +137,20 @@ create table Clase (
     primary key(nrc),
     foreign key(idProfesor) references Usuario(uid) ON DELETE CASCADE,
     foreign key(idMateria) references materia(id) ON DELETE CASCADE  
+);
+
+create table horario(
+	id int NOT NULL auto_increment,
+    idSemana int NOT NULL,
+    idSalon int NOT NULL,
+    idClase int NOT NULL,
+    horaInicio time NOT NULL,
+    horaFin time NOT NULL,
+    createdAt datetime NOT NULL,
+    updatedAt datetime NOT NULL,
+    primary key(id),
+    foreign key(idSemana) references diaSemana(id) ON DELETE CASCADE,
+    foreign key(idSalon) references Salon(id) ON DELETE CASCADE
 );
 
 create table Acta (

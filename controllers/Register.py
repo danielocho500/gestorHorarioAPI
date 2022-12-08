@@ -35,14 +35,14 @@ class Register(Resource):
 
         rol = get_info_token.get_rol(token)
 
-        if not (rol == 3):
+        if not (rol == 3 or rol == 4):
             return response_template.not_authorized("No tienes permisos para realizar esta acción")
 
         query = db.session.query(Usuario_Model).filter_by(correo = args.correo).first()
         if (query != None):
             return response_template.not_authorized('El correo ya existe')
 
-        if(args.rol < 0 or args.rol > 3):
+        if(args.rol < 0 or args.rol > 4):
             return response_template.bad_request('Rol invalido')
 
         if args.rol == 1 and args.matricula is None:
