@@ -60,7 +60,7 @@ create table Grupo (
     idPeriodo int NOT NULL,
     idArea int NOT NULL,
     semestre tinyint NOT NULL,
-    bloque char NOT NULL,
+    bloque varchar(25) NOT NULL,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     primary key(id),
@@ -142,7 +142,7 @@ create table horario(
 	id int NOT NULL auto_increment,
     idSemana int NOT NULL,
     idSalon int NOT NULL,
-    idClase int NOT NULL,
+    idClase varchar(20) NOT NULL,
     horaInicio time NOT NULL,
     horaFin time NOT NULL,
     createdAt datetime NOT NULL,
@@ -150,7 +150,7 @@ create table horario(
     primary key(id),
     foreign key(idSemana) references diaSemana(id) ON DELETE CASCADE,
     foreign key(idSalon) references Salon(id) ON DELETE CASCADE,
-    foreign key(idClase) references Salon(id) ON DELETE CASCADE
+    foreign key(idClase) references Clase(nrc) ON DELETE CASCADE
 );
 
 create table Acta (
@@ -320,7 +320,7 @@ Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, s
 Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014000@estudiantes.com', 's19014000', 1, 'Daniel', 'Diaz', 'Rossell', 1 ,"2000-11-3 00:00:00",NOW(),NOW(),'s19014000');
 Insert INTO Usuario (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014001@estudiantes.com', 's19014001', 1, 'Raúl', 'Arturo' ,'Peredo', 'Estudillo', 1 ,"2000-11-19 00:00:00",NOW(),NOW(),'s19014001');
 Insert INTO Usuario (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014002@estudiantes.com', 's19014002', 1, 'Eder', 'Iván' ,'Negrete', 'Cacahuate', 1 ,"2000-10-26 00:00:00",NOW(),NOW(),'s19014002');
-Insert INTO Usuario (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014003@estudiantes.com', 's19014003', 1, 'Maria', 'Elena' ,'Fernández', 'Castillo', 1 ,"2000-03-6 00:00:00",NOW(),NOW(),'s19014003');
+Insert INTO Usuario (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014003@estudiantes.com', 's19014003', 1, 'Karla', 'Maria' ,'Fernández', 'Castillo', 1 ,"2000-03-6 00:00:00",NOW(),NOW(),'s19014003');
 Insert INTO Usuario (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014004@estudiantes.com', 's19014004', 1, 'Alex', 'Jordan' ,'Pastel', 'Mani', 1 ,"2000-08-20 00:00:00",NOW(),NOW(),'s19014003');
 Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014005@estudiantes.com', 's19014005', 1, 'Antonio', 'Dominguez' ,'Galleta', 1 ,"2000-12-7 00:00:00",NOW(),NOW(),'s19014005');
 Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,matricula) VALUES ('s19014006@estudiantes.com', 's19014006', 1, 'David', 'Mijangos', 'paleta', 1 ,"2000-5-29 00:00:00",NOW(),NOW(),'s19014006');
@@ -343,7 +343,7 @@ INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, pr
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234028@profesor.com', 'p1234028', 1, 'Diego','Eliceo','Valerio', 'Cardenas', 2 ,"1965-6-15 00:00:00",NOW(),NOW(),'p1234028');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234031@profesor.com', 'p1234031', 1, 'Maria','Angeles','Arenas', 'Valdez', 2 ,"1981-7-7 00:00:00",NOW(),NOW(),'p1234031');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234032@profesor.com', 'p1234032', 1, 'Erika','','Meneses', 'Rico', 2 ,"1976-8-7 00:00:00",NOW(),NOW(),'p1234032');
-INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234033@profesor.com', 'p1234033', 1, 'Mario','Bros','Valerio', 'Cardenas', 2 ,"1965-6-15 00:00:00",NOW(),NOW(),'p1234033');
+INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234033@profesor.com', 'p1234033', 1, 'Gabriela','Daili','Gonzáles', 'Cardenas', 2 ,"1996-6-29 00:00:00",NOW(),NOW(),'p1234033');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234030@profesor.com', 'p1234030', 1, 'Juan','Carlos','Pérez', 'Arriaga', 2 ,"1989-4-1 00:00:00",NOW(),NOW(),'p1234030');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('p1234034@profesor.com', 'p1234034', 1, 'Stephen','Andres','Curry', 'Arriaga', 2 ,"1990-4-1 00:00:00",NOW(),NOW(),'p1234034');
 
@@ -352,54 +352,529 @@ INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, s
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Carlos','Pasteur','Hérnandez', 3 ,"1970-5-21 00:00:00",NOW(),NOW(),'s123401');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Tae','cook','Hérnandez', 3 ,"1991-1-28 00:00:00",NOW(),NOW(),'s123401');
 
-#Periodo feb2020-julio2020
+	#Periodo feb2020-julio2020
 INSERT INTO Periodo (fechaInicio, fechaFin, fechaOrdinario, fechaExtra, activo, createdAt, updatedAt) Values ("2020-2-01 00:00:00", "2020-7-30 00:00:00", "2020-6-15 00:00:00", "2020-7-15 00:00:00", 0, NOW(),NOW());
 
 	#Primero feb2020-julio2020
+# primero 
 INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 1, 1, 'A', NOW(), NOW());
 INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 1, 1, 'B', NOW(), NOW());
 
+# tercero
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 3, 3, 'A', NOW(), NOW());
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 3, 3, 'B', NOW(), NOW());
+
+#Quinto
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 5, 5, 'Humanidades', NOW(), NOW());
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 6, 5, 'Biologicas', NOW(), NOW());
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 7, 5, 'Economica', NOW(), NOW());
+INSERT INTO Grupo (idPeriodo, idArea, semestre, bloque, createdAt, updatedAt) VALUES (1, 8, 5, 'Exactas', NOW(), NOW());
+
+# primero
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (1, 1, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (2, 1, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (3, 1, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (4, 1, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (5, 1, 0, NOW(), NOW());
 
-#clases 1a 
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201001', 1, 1,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 1, 1, '07:00', '8:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 1, 1, '09:00', '10:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201002', 2, 2,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, 2, '09:00', '10:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, 2, '07:00', '8:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201003', 3, 3,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 3, 3, '07:00', '8:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, 3, '11:00', '12:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201004', 1, 4,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, 4, '09:00', '10:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, 4, '07:00', '8:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201005', 2, 2,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, 5, '09:00', '10:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, 5, '07:00', '8:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201006', 3, 2,1 ,NOW(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, 6, '09:00', '10:59', now(), NOW());
-INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, 6, '07:00', '8:59', now(), NOW());
-
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201002', 2, 2,1 ,NOW(), NOW());
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201003', 3, 3,1 ,NOW(), NOW());
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201004', 1, 4,1 ,NOW(), NOW());
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201005', 2, 5,1 ,NOW(), NOW());
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201006', 3, 6,1 ,NOW(), NOW());
-
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (6, 2, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (7, 2, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (8, 2, 0, NOW(), NOW());
 INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (9, 2, 0, NOW(), NOW());
-INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (20, 2, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (10, 2, 0, NOW(), NOW());
+
+#tercero
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (11, 3, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (12, 3, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (13, 3, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (14, 3, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (15, 3, 0, NOW(), NOW());
+
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (16, 4, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (17, 4, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (18, 4, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (19, 4, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (20, 4, 0, NOW(), NOW());
+
+#Quinto
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (21, 5, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (22, 5, 0, NOW(), NOW());
+
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (23, 6, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (24, 6, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (25, 6, 0, NOW(), NOW());
+
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (26, 7, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (27, 7, 0, NOW(), NOW());
+
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (28, 8, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (29, 8, 0, NOW(), NOW());
+INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt) VALUES (30, 8, 0, NOW(), NOW());
+
+#clases 1a 
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201001', 1, 1,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 1, '201001', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 1, '201001', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201002', 2, 2,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, '201002', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, '201002', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201003', 3, 3,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 3, '201003', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201003', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201004', 1, 4,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201004', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201004', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201005', 2, 5,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 2, '201005', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 2, '201005', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201006', 3, 6,1 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 3, '201006', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 3, '201006', '09:00', '10:59', now(), NOW());
+
+#clases 1b
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201007', 1, 1,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201007', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 3, '201007', '07:00', '8:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201008', 2, 2,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 2, '201008', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 1, '201008', '09:00', '10:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201009', 3, 3,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, '201009', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 2, '201009', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201010', 1, 4,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 3, '201010', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 3, '201010', '7:00', '8:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201011', 2, 5,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201011', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201011', '09:00', '10:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201012', 3, 6,2 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 2, '201012', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, '201012', '11:00', '12:59', now(), NOW());
+
+#clases 3a 
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201013', 4, 13,3 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 4, '201013', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 4, '201013', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201014', 5, 14,3 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 5, '201014', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 5, '201014', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201015', 6, 15,3 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 6, '201015', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 6, '201015', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201016', 4, 16,3 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 4, '201016', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 4, '201016', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201017', 5, 17,3 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 5, '201017', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 5, '201017', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201018', 6, 18, 3,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 6, '201018', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 6, '201018', '09:00', '10:59', now(), NOW());
+
+#clases 3b
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201019', 4, 13,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 6, '201019', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 6, '201019', '07:00', '8:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201020', 5, 14,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 4, '201020', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 4, '201020', '09:00', '10:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201021', 6, 15,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 5, '201021', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 5, '201021', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201022', 4, 16,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 6, '201022', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 6, '201022', '7:00', '8:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201023', 5, 17,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 4, '201023', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 4, '201023', '09:00', '10:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201024', 6, 18,4 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 5, '201024', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 5, '201024', '11:00', '12:59', now(), NOW());
+
+#clases humanidades
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201025', 7, 25,5 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 7, '201025', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 7, '201025', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201026', 5, 26,5 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 8, '201026', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 8, '201026', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201027', 6, 27,5 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 9, '201027', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 9, '201027', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201028', 4, 28,5 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 7, '201028', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 7, '201028', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201029', 5, 29,5 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 8, '201029', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 8, '201029', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201030', 6, 30, 5,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 9, '201030', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 9, '201030', '09:00', '10:59', now(), NOW());
+
+#clases económico
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201031', 8, 25,6 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 10, '201031', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 10, '201031', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201032', 11, 26,6 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 11, '201032', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 11, '201032', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201033', 15, 27,6 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 12, '201033', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 12, '201033', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201034', 12, 28,6 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 10, '201034', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 10, '201034', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201035', 8, 29,6 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 11, '201035', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 11, '201035', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201036', 12, 30, 6,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 12, '201036', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 12, '201036', '09:00', '10:59', now(), NOW());
+
+#clases biologicas
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201037', 9, 25,7 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 13, '201037', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 13, '201037', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201038', 3, 26,7 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 14, '201038', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 14, '201038', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201039', 9, 27,7 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 15, '201039', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 15, '201039', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201040', 13, 28,7 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 15, '201040', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 15, '201040', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201041', 6, 29,7 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 14, '201041', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 14, '201041', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201042', 13, 30, 7,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 15, '201042', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 15, '201042', '09:00', '10:59', now(), NOW());
+
+#clases Exactas
+# A
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201043', 2, 25,8 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 12, '201043', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 12, '201043', '09:00', '10:59', now(), NOW());
+
+# B
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201044', 14, 26,8 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 10, '201044', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 10, '201044', '07:00', '8:59', now(), NOW());
+
+# C
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201045', 10, 27,8 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 11, '201045', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 11, '201045', '09:00', '10:59', now(), NOW());
+
+# D
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201046', 5, 28,8 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 12, '201046', '09:00', '10:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 12, '201046', '11:00', '12:59', now(), NOW());
+
+#E
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201047', 14, 29,8 ,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 10, '201047', '11:00', '12:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 10, '201047', '07:00', '8:59', now(), NOW());
+
+#F
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201048', 10, 30, 8,NOW(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 11, '201048', '07:00', '8:59', now(), NOW());
+INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 11, '201048', '09:00', '10:59', now(), NOW());
+
+#Calificaciones
+#1A
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201001', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201002', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201003', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201004', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201005', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (1, '201006', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201001', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201002', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201003', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201004', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201005', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (2, '201006', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201001', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201002', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201003', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201004', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201005', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (3, '201006', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201001', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201002', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201003', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201004', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201005', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (4, '201006', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201001', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201002', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201003', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201004', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201005', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (5, '201006', 1, 9, 0, NOW(), NOW());
 
 
+#1B
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201007', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201009', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201009', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201010', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201011', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (6, '201012', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201007', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201009', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201009', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201010', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201011', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (7, '201012', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201007', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201009', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201009', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201010', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201011', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (8, '201012', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201007', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201009', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201009', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201010', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201011', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (9, '201012', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201007', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201009', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201009', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201010', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201011', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (10, '201012', 1, 9, 0, NOW(), NOW());
+
+#3A
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201013', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201014', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201015', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201016', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201017', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (11, '201018', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201013', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201014', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201015', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201016', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201017', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (12, '201018', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201013', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201014', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201015', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201016', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201017', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (13, '201018', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201013', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201014', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201015', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201016', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201017', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (14, '201018', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201013', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201014', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201015', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201016', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201017', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (15, '201018', 1, 9, 0, NOW(), NOW());
+
+#3B
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201019', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201020', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201021', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201022', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201023', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (16, '201024', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201019', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201020', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201021', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201022', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201023', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (17, '201024', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201019', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201020', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201021', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201022', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201023', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (18, '201024', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201019', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201020', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201021', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201022', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201023', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (19, '201024', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201019', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201020', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201021', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201022', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201023', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (20, '201024', 1, 9, 0, NOW(), NOW());
+
+#Humanidades
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201025', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201026', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201027', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201028', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201029', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (21, '201030', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201025', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201026', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201027', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201028', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201029', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (22, '201030', 1, 9, 0, NOW(), NOW());
+
+#Biologicas
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201031', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201032', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201033', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201034', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201035', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (23, '201036', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201031', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201032', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201033', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201034', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201035', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (24, '201036', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201031', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201032', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201033', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201034', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201035', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (25, '201036', 1, 9, 0, NOW(), NOW());
+
+#Económico
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201037', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201038', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201039', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201040', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201041', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (26, '201042', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201037', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201038', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201039', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201040', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201041', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (27, '201042', 1, 9, 0, NOW(), NOW());
+
+#Exactas
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201043', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201044', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201045', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201046', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201047', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (28, '201048', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201043', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201044', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201045', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201046', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201047', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (29, '201048', 1, 9, 0, NOW(), NOW());
+
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201043', 1, 9, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201044', 1, 10, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201045', 1, 8, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201046', 1, 7, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201047', 1, 6, 0, NOW(), NOW());
+INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201048', 1, 9, 0, NOW(), NOW());
