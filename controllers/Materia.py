@@ -5,8 +5,6 @@ from models.Materia import Materia_Model
 from utils.db import db
 from utils.response_template import response_template
 
-#abort(404, message="video id is not valid")
-
 materia_patch_args = reqparse.RequestParser()
 materia_patch_args.add_argument("nombre", type=str, help="Nombre de la materia", required = True)
 materia_patch_args.add_argument("semestre", type=str, help="Número del semestre", required = True)

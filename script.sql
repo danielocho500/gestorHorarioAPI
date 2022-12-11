@@ -32,8 +32,6 @@ CREATE TABLE Usuario (
     FOREIGN KEY (rol) REFERENCES Rol(id)
 );
 
-Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('admin@admin.com', 'admin', 1, 'admin', 'admin', 4,NOW(),NOW(),NOW(),'admin');
-
 CREATE TABLE Periodo (
 	id int NOT NULL auto_increment,
     fechaInicio date NOT NULL,
@@ -351,6 +349,9 @@ INSERT INTO USUARIO (correo, password, isActivo, primerNombre, segundoNombre, pr
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Karla','Mongue','Hérnandez', 3 ,"1980-5-21 00:00:00",NOW(),NOW(),'s123401');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Carlos','Pasteur','Hérnandez', 3 ,"1970-5-21 00:00:00",NOW(),NOW(),'s123401');
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Tae','cook','Hérnandez', 3 ,"1991-1-28 00:00:00",NOW(),NOW(),'s123401');
+
+#Administrador
+Insert INTO Usuario (correo, password, isActivo, primerNombre, primerApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('admin@admin.com', 'admin', 1, 'admin', 'admin', 4,NOW(),NOW(),NOW(),'admin');
 
 	#Periodo feb2020-julio2020
 INSERT INTO Periodo (fechaInicio, fechaFin, fechaOrdinario, fechaExtra, activo, createdAt, updatedAt) Values ("2020-2-01 00:00:00", "2020-7-30 00:00:00", "2020-6-15 00:00:00", "2020-7-15 00:00:00", 1, NOW(),NOW());

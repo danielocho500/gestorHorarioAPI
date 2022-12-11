@@ -12,6 +12,7 @@ area_patch_args.add_argument("nombre", type=str, help="Nombre del área", requir
 
 area_post_args = reqparse.RequestParser()
 area_post_args.add_argument("nombre", type=str, help="Nombre de la materia", required = True)
+area_post_args.add_argument("semestre", type=str, help="Semestre del area", required = True)
 
 class Area(Resource):
     def get(self, idArea):
@@ -52,6 +53,7 @@ class Areas(Resource):
         
         area = Area_Model(
             nombre=args.nombre,
+            semestre=args.semestre,
             createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
             updatedAt=time.strftime('%Y-%m-%d %H:%M:%S')
         )

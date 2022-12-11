@@ -44,18 +44,21 @@ class PeriodoActivoPut(Resource):
     def put(self, idPeriodo):
 
         try:
-            periodo = db.get_or_404(Periodo_Model, idPeriodo)
+            db.get_or_404(Periodo_Model, idPeriodo)
         except:
             return response_template.not_found('El periodo no fue encontrada')
 
         periodos_models = db.session.execute(db.select(Periodo_Model)).scalars().fetchall()
 
         for periodo in periodos_models:
-            periodo.activo = 0
+            if(periodo.id == idPeriodo and periodo.activo == 0):
+                periodo.activo = 1
+                periodo.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
+            elif(periodo.id != idPeriodo and periodo.activo == 1):
+                periodo.activo = 0
+                periodo.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
             db.session().commit()
-
-        periodo.activo = 1
-        db.session().commit()
+            print(periodo.activo)
 
         return response_template.succesful({},"Periodo activado", 204 )
             
