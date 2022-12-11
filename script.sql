@@ -353,7 +353,7 @@ INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, s
 INSERT INTO USUARIO (correo, password, isActivo, primerNombre, primerApellido, segundoApellido, rol,fechaNacimiento,createdAt,updatedAt,claveEmpleado) VALUES ('s123401@secretario.com', 's123401', 1, 'Tae','cook','Hérnandez', 3 ,"1991-1-28 00:00:00",NOW(),NOW(),'s123401');
 
 	#Periodo feb2020-julio2020
-INSERT INTO Periodo (fechaInicio, fechaFin, fechaOrdinario, fechaExtra, activo, createdAt, updatedAt) Values ("2020-2-01 00:00:00", "2020-7-30 00:00:00", "2020-6-15 00:00:00", "2020-7-15 00:00:00", 0, NOW(),NOW());
+INSERT INTO Periodo (fechaInicio, fechaFin, fechaOrdinario, fechaExtra, activo, createdAt, updatedAt) Values ("2020-2-01 00:00:00", "2020-7-30 00:00:00", "2020-6-15 00:00:00", "2020-7-15 00:00:00", 1, NOW(),NOW());
 
 	#Primero feb2020-julio2020
 # primero 

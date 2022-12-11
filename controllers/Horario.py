@@ -107,7 +107,7 @@ class Horarios(Resource):
             return response_template.not_found('El dia de la semana no fue encontrado')
 
         if not(regexTime(args.horarioInicio) and regexTime(args.horarioFin)):
-            return response_template.bad_request(msg='Horario incorrecto')
+            return response_template.bad_request(msg='Formato de hora incorrecto')
 
         horarioInicioCadena = datetime.datetime.strptime(args.horarioInicio, '%H:%M').time()
         horarioFinCadena = datetime.datetime.strptime(args.horarioFin, '%H:%M').time()

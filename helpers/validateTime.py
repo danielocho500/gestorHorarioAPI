@@ -1,4 +1,3 @@
-from datetime import time
 import re
 
 def regexTime(str):
