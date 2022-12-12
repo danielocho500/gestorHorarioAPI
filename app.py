@@ -13,7 +13,7 @@ from controllers.DiaSemana import DiaSemana, DiasSemana
 from controllers.Horario import Horario, Horarios, HorariosSalon
 from controllers.MateriaArea import MateriaArea, MateriaAreas, MateriasArea
 from controllers.Periodo import PeriodoActivo, Periodos, Periodo, PeriodoActivoPut
-from controllers.Grupo import Grupos, Grupo
+from controllers.Grupo import Grupos, Grupo,GrupoEstudiante
 
 from utils.db import db
 app = Flask(__name__)
@@ -60,6 +60,7 @@ api.add_resource(PeriodoActivoPut, "/api/periodo/activar/<int:idPeriodo>")
 
 api.add_resource(Grupos, "/api/grupo")
 api.add_resource(Grupo, "/api/grupo/<int:idGrupo>")
+api.add_resource(GrupoEstudiante, "/api/grupo/estudiante/<int:semestre>")
 
 if __name__ == "__main__":
     app.run(debug=True)

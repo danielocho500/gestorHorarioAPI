@@ -1,6 +1,7 @@
 from utils.db import db
 import time
 from flask_restful import Resource, reqparse, abort
+from sqlalchemy.sql import text
 from flask import request
 from models.Grupo import Grupo_Model
 from models.Area import Area_Model
@@ -113,3 +114,33 @@ class Grupo(Resource):
         }
 
         return response_template.succesful(data,'Grupo', 200)
+
+class GrupoEstudiante(Resource):
+    def get(self, semestre):
+        statement = text("SELECT * FROM estudiantes_libres_periodo;")
+
+        if not(semestre > 0 and semestre <= 6):
+            return response_template.bad_request('Semestre fuera del rango permitido (1-6)')
+
+        estudiantes_libres = db.session.execute(statement).fetchall()
+        estudiantes = []
+        cantidad = 0
+        for estudiante in estudiantes_libres:
+            if not (estudiante[7]<semestre):
+                continue
+            cantidad += 1
+            estudiantes.append({
+                'uid': estudiante[0],
+                'correo': estudiante[1],
+                'primerNombre': estudiante[2],
+                'segundoNombre': estudiante[3],
+                'primerApellido': estudiante[4],
+                'segundoApellido': estudiante[5],
+                'matricula': estudiante[6],
+                'ultimoSemestre': estudiante[7]
+            })
+
+        return response_template.succesful({
+            'cantidad': cantidad,
+            'estudiantes': estudiantes
+        }, "Estudiantes libres con semestre valido", 200)
