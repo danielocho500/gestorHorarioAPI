@@ -16,6 +16,8 @@ from controllers.Periodo import PeriodoActivo, Periodos, Periodo, PeriodoActivoP
 from controllers.Grupo import Grupos, Grupo,GrupoEstudianteValido, GrupoEstudiante
 from controllers.Profesor import Profesor, Profesores
 from controllers.Clase import Clases
+from controllers.Calificacion import CalificacionEstudiante, CalificacionToken, CalificacionClase
+from controllers.Estudiante import Estudiantes
 
 from utils.db import db
 app = Flask(__name__)
@@ -69,6 +71,12 @@ api.add_resource(Profesores, "/api/profesor")
 api.add_resource(Profesor, "/api/profesor/<int:idProfesor>")
 
 api.add_resource(Clases, "/api/clase")
+
+api.add_resource(CalificacionEstudiante, "/api/calificacion/estudiante/<int:idEstudiante>")
+api.add_resource(CalificacionToken, "/api/calificacion")
+api.add_resource(CalificacionClase, "/api/calificacion/clase/<string:nrc>")
+
+api.add_resource(Estudiantes, "/api/estudiante")
 
 if __name__ == "__main__":
     app.run(debug=True)

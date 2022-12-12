@@ -1,5 +1,5 @@
 import time    
-from flask_restful import Resource, reqparse, abort
+from flask_restful import Resource, reqparse
 
 from models.Materia import Materia_Model
 from utils.db import db
@@ -8,10 +8,12 @@ from utils.response_template import response_template
 materia_patch_args = reqparse.RequestParser()
 materia_patch_args.add_argument("nombre", type=str, help="Nombre de la materia", required = True)
 materia_patch_args.add_argument("semestre", type=str, help="Número del semestre", required = True)
+materia_patch_args.add_argument("idArea", type=str, help="id del area", required = True)
 
 materia_post_args = reqparse.RequestParser()
 materia_post_args.add_argument("nombre", type=str, help="Nombre de la materia", required = True)
 materia_post_args.add_argument("semestre", type=str, help="Número del semestre", required = True)
+materia_post_args.add_argument("idArea", type=str, help="id del area", required = True)
 
 class Materia(Resource):
     def get(self, idMateria):
@@ -21,6 +23,7 @@ class Materia(Resource):
             return response_template.not_found('La materia no fue encontrada')
         data = {
             'id': materia.id,
+            'idArea': materia.idArea,
             'nombre': materia.nombre,
         }
         return response_template.succesful(data, '', 200)
@@ -33,12 +36,14 @@ class Materia(Resource):
             return response_template.not_found('La materia no fue encontrada')
         materia.nombre = args.nombre
         materia.semestre = args.semestre
+        materia.idArea = args.idArea
         materia.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
 
         db.session().commit()
         data = {
             'id': materia.id,
             'nombre': materia.nombre,
+            'idArea': materia.idArea
         }
         return response_template.succesful(data,"Materia modificada", 204 )
     def delete(self, idMateria):
@@ -69,7 +74,7 @@ class Materias(Resource):
         data = {
             'id': materia.id,
             'nombre': materia.nombre,
-            'semestre': materia.semestre
+            'idArea': materia.idArea
         }
         return response_template.succesful(data, 'Materia creada', 200)
     
@@ -80,8 +85,8 @@ class Materias(Resource):
         for materia in materias_models:
             data.append({
                 'id': materia.id,
-                'nombre': materia.nombre,
-                'semestre': materia.semestre
+                'idArea': materia.idArea,
+                'nombre': materia.nombre
             })
 
         return response_template.succesful(data=data, msg='', code=200)
