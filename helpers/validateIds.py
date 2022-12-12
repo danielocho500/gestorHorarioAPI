@@ -1,4 +1,4 @@
-def validateString(str):
+def validateIds(str):
     try:
         arraySinComa = str.split(",")
         arrayNumeros = [int(numeric_string) for numeric_string in arraySinComa]

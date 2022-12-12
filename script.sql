@@ -879,3 +879,27 @@ INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt,
 INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201046', 1, 7, 0, NOW(), NOW());
 INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201047', 1, 6, 0, NOW(), NOW());
 INSERT INTO Acta (idEstGrupo, nrc, esFinal, calificacion,esOrdinario, createdAt, updatedAt) VALUES (30, '201048', 1, 9, 0, NOW(), NOW());
+
+#vistas
+
+create view estudiantes_libres_periodo AS
+SELECT us.uid, us.correo, us.primerNombre, us.segundoNombre, us.primerApellido, us.segundoApellido, us.matricula, coalesce(MAX(gru.semestre), 0) AS semestre
+FROM usuario as us
+left JOIN estudiantegrupo as estgru
+ON estgru.idEstudiante = us.uid
+left join grupo as gru
+ON estgru.idGrupo = gru.id
+WHERE us.isActivo = 1
+AND us.rol = 1
+AND us.uid NOT IN
+(SELECT us.uid 
+FROM Usuario as us 
+INNER JOIN estudiantegrupo as estgru
+INNER JOIN grupo as gru
+INNER JOIN periodo as per
+where us.uid = estgru.idEstudiante
+AND gru.id = estgru.idGrupo
+AND per.id = gru.idPeriodo
+AND per.activo = 1)
+GROUP BY us.uid
+ORDER BY semestre DESC;

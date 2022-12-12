@@ -9,6 +9,7 @@ from models.Periodo import Periodo_Model
 from models.EstudianteGrupo import estudianteGrupo_Model
 from models.Usuario import Usuario_Model
 from utils.response_template import response_template
+from helpers.validateIds import validateIds
 
 grupo_post_args = reqparse.RequestParser()
 grupo_post_args.add_argument("idArea", type=str, help="id del Area", required = True)
@@ -115,7 +116,7 @@ class Grupo(Resource):
 
         return response_template.succesful(data,'Grupo', 200)
 
-class GrupoEstudiante(Resource):
+class GrupoEstudianteValido(Resource):
     def get(self, semestre):
         statement = text("SELECT * FROM estudiantes_libres_periodo;")
 
@@ -144,3 +145,32 @@ class GrupoEstudiante(Resource):
             'cantidad': cantidad,
             'estudiantes': estudiantes
         }, "Estudiantes libres con semestre valido", 200)
+
+grupoEstudiante_post_args = reqparse.RequestParser()
+grupoEstudiante_post_args.add_argument("idsEstudiantes", type=str, help="ids de los estudiantes", required = True)
+
+class GrupoEstudiante(Resource):
+    def post(self, idGrupo):
+        try:
+            db.get_or_404(Grupo_Model, idGrupo)
+        except:
+            return response_template.not_found('El grupo no fue encontrado')
+        args = grupoEstudiante_post_args.parse_args()
+        idsEstudiantes = args.idsEstudiantes
+
+        if not(validateIds(idsEstudiantes)):
+            return response_template.bad_request("Formato de ids invalido, debe ser (1,2,3,4)")
+
+        idsEstudiantes = validateIds(idsEstudiantes)
+        
+        for id in idsEstudiantes:
+            estgru = estudianteGrupo_Model(
+                idEstudiante=id,
+                idGrupo=idGrupo,
+                isRepite=0,
+                createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
+                updatedAt=time.strftime('%Y-%m-%d %H:%M:%S')
+            )
+
+            db.session.add(estgru)
+            db.session.commit()

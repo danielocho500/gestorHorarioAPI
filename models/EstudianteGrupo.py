@@ -5,7 +5,7 @@ class estudianteGrupo_Model(db.Model):
     __tablename__ = "estudianteGrupo"
 
     id = Column(Integer, primary_key= True)
-    idEstudiante = Column(Integer, db.ForeignKey('Usuario.uid'))
+    idEstudiante = Column(Integer, db.ForeignKey('usuario.uid'))
     idGrupo = Column(Integer, db.ForeignKey('Grupo.id'))
     isRepite = Column(Integer)
     createdAt = Column(DateTime)
