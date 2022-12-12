@@ -14,6 +14,8 @@ from controllers.Horario import Horario, Horarios, HorariosSalon
 from controllers.MateriaArea import MateriaArea, MateriaAreas, MateriasArea
 from controllers.Periodo import PeriodoActivo, Periodos, Periodo, PeriodoActivoPut
 from controllers.Grupo import Grupos, Grupo,GrupoEstudianteValido, GrupoEstudiante
+from controllers.Profesor import Profesor, Profesores
+from controllers.Clase import Clases
 
 from utils.db import db
 app = Flask(__name__)
@@ -62,6 +64,11 @@ api.add_resource(Grupos, "/api/grupo")
 api.add_resource(Grupo, "/api/grupo/<int:idGrupo>")
 api.add_resource(GrupoEstudianteValido, "/api/grupo/estudianteValido/<int:semestre>")
 api.add_resource(GrupoEstudiante, "/api/grupo/estudiante/<int:idGrupo>")
+
+api.add_resource(Profesores, "/api/profesor")
+api.add_resource(Profesor, "/api/profesor/<int:idProfesor>")
+
+api.add_resource(Clases, "/api/clase")
 
 if __name__ == "__main__":
     app.run(debug=True)

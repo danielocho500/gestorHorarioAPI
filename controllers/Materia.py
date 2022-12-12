@@ -22,7 +22,6 @@ class Materia(Resource):
         data = {
             'id': materia.id,
             'nombre': materia.nombre,
-            'semestre': materia.semestre
         }
         return response_template.succesful(data, '', 200)
     def put(self, idMateria):
@@ -40,7 +39,6 @@ class Materia(Resource):
         data = {
             'id': materia.id,
             'nombre': materia.nombre,
-            'semestre': materia.semestre
         }
         return response_template.succesful(data,"Materia modificada", 204 )
     def delete(self, idMateria):

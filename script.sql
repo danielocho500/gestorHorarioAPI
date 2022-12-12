@@ -414,249 +414,249 @@ INSERT INTO estudianteGrupo (idEstudiante,idGrupo,isRepite, createdAt, updatedAt
 
 #clases 1a 
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201001', 1, 1,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201001', 31, 1,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 1, '201001', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 1, '201001', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201002', 2, 2,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201002', 32, 2,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, '201002', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, '201002', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201003', 3, 3,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201003', 33, 3,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 3, '201003', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201003', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201004', 1, 4,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201004', 31, 4,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201004', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201004', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201005', 2, 5,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201005', 32, 5,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 2, '201005', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 2, '201005', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201006', 3, 6,1 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201006', 33, 6,1 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 3, '201006', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 3, '201006', '09:00', '10:59', now(), NOW());
 
 #clases 1b
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201007', 1, 1,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201007', 31, 1,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201007', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 3, '201007', '07:00', '8:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201008', 2, 2,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201008', 32, 2,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 2, '201008', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 1, '201008', '09:00', '10:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201009', 3, 3,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201009', 33, 3,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 2, '201009', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 2, '201009', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201010', 1, 4,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201010', 31, 4,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 3, '201010', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 3, '201010', '7:00', '8:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201011', 2, 5,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201011', 32, 5,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 1, '201011', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 1, '201011', '09:00', '10:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201012', 3, 6,2 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201012', 33, 6,2 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 2, '201012', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 2, '201012', '11:00', '12:59', now(), NOW());
 
 #clases 3a 
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201013', 4, 13,3 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201013', 34, 13,3 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 4, '201013', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 4, '201013', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201014', 5, 14,3 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201014', 35, 14,3 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 5, '201014', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 5, '201014', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201015', 6, 15,3 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201015', 36, 15,3 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 6, '201015', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 6, '201015', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201016', 4, 16,3 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201016', 34, 16,3 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 4, '201016', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 4, '201016', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201017', 5, 17,3 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201017', 35, 17,3 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 5, '201017', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 5, '201017', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201018', 6, 18, 3,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201018', 36, 18, 3,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 6, '201018', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 6, '201018', '09:00', '10:59', now(), NOW());
 
 #clases 3b
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201019', 4, 13,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201019', 34, 13,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 6, '201019', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 6, '201019', '07:00', '8:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201020', 5, 14,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201020', 35, 14,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 4, '201020', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 4, '201020', '09:00', '10:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201021', 6, 15,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201021', 36, 15,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 5, '201021', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 5, '201021', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201022', 4, 16,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201022', 34, 16,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 6, '201022', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 6, '201022', '7:00', '8:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201023', 5, 17,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201023', 35, 17,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 4, '201023', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 4, '201023', '09:00', '10:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201024', 6, 18,4 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201024', 36, 18,4 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 5, '201024', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 5, '201024', '11:00', '12:59', now(), NOW());
 
 #clases humanidades
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201025', 7, 25,5 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201025', 37, 25,5 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 7, '201025', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 7, '201025', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201026', 5, 26,5 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201026', 35, 26,5 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 8, '201026', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 8, '201026', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201027', 6, 27,5 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201027', 36, 27,5 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 9, '201027', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 9, '201027', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201028', 4, 28,5 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201028', 34, 28,5 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 7, '201028', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 7, '201028', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201029', 5, 29,5 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201029', 35, 29,5 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 8, '201029', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 8, '201029', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201030', 6, 30, 5,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201030', 36, 30, 5,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 9, '201030', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 9, '201030', '09:00', '10:59', now(), NOW());
 
 #clases económico
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201031', 8, 25,6 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201031', 38, 25,6 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 10, '201031', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 10, '201031', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201032', 11, 26,6 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201032', 41, 26,6 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 11, '201032', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 11, '201032', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201033', 15, 27,6 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201033', 45, 27,6 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 12, '201033', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 12, '201033', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201034', 12, 28,6 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201034', 42, 28,6 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 10, '201034', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 10, '201034', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201035', 8, 29,6 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201035', 48, 29,6 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 11, '201035', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 11, '201035', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201036', 12, 30, 6,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201036', 42, 30, 6,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 12, '201036', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 12, '201036', '09:00', '10:59', now(), NOW());
 
 #clases biologicas
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201037', 9, 25,7 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201037', 49, 25,7 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 13, '201037', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 13, '201037', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201038', 3, 26,7 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201038', 43, 26,7 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 14, '201038', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 14, '201038', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201039', 9, 27,7 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201039', 49, 27,7 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 15, '201039', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 15, '201039', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201040', 13, 28,7 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201040', 43, 28,7 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 15, '201040', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 15, '201040', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201041', 6, 29,7 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201041', 46, 29,7 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 14, '201041', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 14, '201041', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201042', 13, 30, 7,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201042', 43, 30, 7,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 15, '201042', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 15, '201042', '09:00', '10:59', now(), NOW());
 
 #clases Exactas
 # A
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201043', 2, 25,8 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201043', 42, 25,8 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 12, '201043', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 12, '201043', '09:00', '10:59', now(), NOW());
 
 # B
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201044', 14, 26,8 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201044', 44, 26,8 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (1, 10, '201044', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 10, '201044', '07:00', '8:59', now(), NOW());
 
 # C
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201045', 10, 27,8 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201045', 40, 27,8 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 11, '201045', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 11, '201045', '09:00', '10:59', now(), NOW());
 
 # D
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201046', 5, 28,8 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201046', 35, 28,8 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 12, '201046', '09:00', '10:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (4, 12, '201046', '11:00', '12:59', now(), NOW());
 
 #E
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201047', 14, 29,8 ,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201047', 44, 29,8 ,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (2, 10, '201047', '11:00', '12:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 10, '201047', '07:00', '8:59', now(), NOW());
 
 #F
-INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201048', 10, 30, 8,NOW(), NOW());
+INSERT INTO Clase (nrc, idProfesor, idMateria, idGrupo, createdAt, updatedAt) VALUES ('201048', 40, 30, 8,NOW(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (3, 11, '201048', '07:00', '8:59', now(), NOW());
 INSERT INTO horario (idSemana,idSalon,idClase,horaInicio, horaFin, createdAt, updatedAt) VALUES (5, 11, '201048', '09:00', '10:59', now(), NOW());
 
