@@ -903,3 +903,38 @@ AND per.id = gru.idPeriodo
 AND per.activo = 1)
 GROUP BY us.uid
 ORDER BY semestre DESC;
+
+create view clase_info_completa AS
+SELECT cl.nrc as nrc, us.uid as profesorUid, us.primerNombre, us.segundoNombre, us.primerApellido, us.segundoApellido, us.claveEmpleado, mat.nombre as materia, are.nombre as area, gru.semestre as semestre, gru.bloque as bloque, per.fechaInicio, per.fechaFIn, per.fechaOrdinario, per.fechaExtra
+FROM clase as cl
+INNER JOIN usuario as us
+INNER JOIN materia as mat
+INNER JOIN area as are
+INNER JOIN grupo as gru
+INNER JOIN periodo as per
+WHERE cl.idProfesor = us.uid
+AND cl.idMAteria = mat.id
+AND mat.idArea = are.id
+AND cl.idGrupo = gru.id
+AND per.id = gru.idPeriodo;
+
+create view calificacionesAlumno as
+SELECT 
+ac.nrc, ac.esFinal, ac.calificacion, ac.esOrdinario,
+estgru.isRepite,
+prof.primerNombre, prof.segundoNombre, prof.primerApellido, prof.segundoApellido,
+mat.nombre as materia,
+gru.semestre, gru.bloque
+FROM acta as ac
+INNER JOIN estudiantegrupo as estgru
+INNER JOIN usuario as us
+INNER JOIN clase as clas
+INNER JOIN usuario as prof
+INNER JOIN materia as mat
+INNER JOIN grupo as gru
+WHERE ac.idEstGrupo = estgru.id
+AND us.uid = estgru.idEstudiante
+AND clas.nrc = ac.nrc
+AND clas.idProfesor = prof.uid
+AND mat.id = clas.idMateria
+AND estgru.idGrupo = gru.id;
