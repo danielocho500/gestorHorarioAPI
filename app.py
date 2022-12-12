@@ -15,7 +15,7 @@ from controllers.MateriaArea import MateriaArea, MateriaAreas, MateriasArea
 from controllers.Periodo import PeriodoActivo, Periodos, Periodo, PeriodoActivoPut
 from controllers.Grupo import Grupos, Grupo,GrupoEstudianteValido, GrupoEstudiante
 from controllers.Profesor import Profesor, Profesores
-from controllers.Clase import Clases
+from controllers.Clase import Clases, Clase_maestro
 from controllers.Calificacion import CalificacionEstudiante, CalificacionToken, CalificacionClase
 from controllers.Estudiante import Estudiantes
 
@@ -71,6 +71,7 @@ api.add_resource(Profesores, "/api/profesor")
 api.add_resource(Profesor, "/api/profesor/<int:idProfesor>")
 
 api.add_resource(Clases, "/api/clase")
+api.add_resource(Clase_maestro, "/api/clase/maestro")
 
 api.add_resource(CalificacionEstudiante, "/api/calificacion/estudiante/<int:idEstudiante>")
 api.add_resource(CalificacionToken, "/api/calificacion")

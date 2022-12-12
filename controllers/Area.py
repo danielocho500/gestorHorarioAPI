@@ -23,6 +23,7 @@ class Area(Resource):
         data = {
             'id': area.id,
             'nombre': area.nombre,
+            'semestre': area.semestre
         }
         return response_template.succesful(data, '', 200)
     def put(self, idArea):
@@ -71,6 +72,7 @@ class Areas(Resource):
             data.append({
                 'id': area.id,
                 'nombre': area.nombre,
+                'semestre': area.semestre
             })
 
         return response_template.succesful(data=data, msg='', code=200)

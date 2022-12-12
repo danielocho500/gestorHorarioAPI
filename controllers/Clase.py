@@ -1,5 +1,6 @@
 import time    
-from flask_restful import Resource, reqparse, abort
+from flask_restful import Resource, reqparse
+from flask import request
 from sqlalchemy.sql import text
 from models.Clase import Clase_Model
 from models.Grupo import Grupo_Model
@@ -7,6 +8,9 @@ from models.Materia import Materia_Model
 from models.Usuario import Usuario_Model
 from utils.db import db
 from utils.response_template import response_template
+from jwt_functions.validate_jwt import validate_jwt
+from jwt_functions import get_info_token
+from models.Usuario import Usuario_Model
 
 class Clase(Resource):
     def get(self, idMateria):
@@ -20,33 +24,6 @@ class Clase(Resource):
             'semestre': materia.semestre
         }
         return response_template.succesful(data, '', 200)
-    def put(self, idMateria):
-        args = materia_patch_args.parse_args()
-
-        try:
-            materia = db.get_or_404(Materia_Model, idMateria)
-        except:
-            return response_template.not_found('La materia no fue encontrada')
-        materia.nombre = args.nombre
-        materia.semestre = args.semestre
-        materia.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
-
-        db.session().commit()
-        data = {
-            'id': materia.id,
-            'nombre': materia.nombre,
-            'semestre': materia.semestre
-        }
-        return response_template.succesful(data,"Materia modificada", 204 )
-    def delete(self, idMateria):
-        try:
-            materia = db.get_or_404(Materia_Model, idMateria)
-        except:
-            return response_template.not_found('La materia no fue encontrada')
-        
-        db.session.delete(materia)
-        db.session.commit()
-        return response_template.succesful({}, "materia eliminada", 200)
 
 clase_post_args = reqparse.RequestParser()
 clase_post_args.add_argument("nrc", type=str, help="NRC de la clase", required = True)
@@ -119,3 +96,39 @@ class Clases(Resource):
             'cantidad':cantidad,
             'clases': clases 
         }, msg='', code=200)
+
+class Clase_maestro(Resource):
+    def get(self):
+        token = request.headers.get('auth_token')
+
+        if(token == None):
+            return response_template.not_authorized("No hay token en el header (auth_token)")
+        
+        if not (validate_jwt(token)):
+            response_template.not_authorized("token inválido")
+
+        rol = get_info_token.get_rol(token)
+        idProfesor = get_info_token.get_uid(token)
+
+        if not (rol == 2):
+            return response_template.not_authorized("No tienes permisos para realizar esta acción")
+
+        try:
+            db.get_or_404(Usuario_Model, idProfesor)
+        except:
+            return response_template.not_found('Token expirado')
+
+        statement = text("SELECT cl.nrc, mat.nombre, gru.semestre, gru.bloque FROM clase as cl INNER JOIN materia as mat INNER JOIN grupo as gru WHERE mat.id = cl.idMateria AND gru.id = cl.idGrupo AND cl.idProfesor = {};".format(idProfesor))
+
+        grupos_maestro = db.session.execute(statement).fetchall()
+        grupos = []
+    
+        for grupo in grupos_maestro:
+            grupos.append({
+                'nrc': grupo[0],
+                'Materia': grupo[1],
+                'Semestre': grupo[2],
+                'Bloque': grupo[3]
+            })
+
+        return response_template.succesful(grupos, "grupos encontrados", 200)
