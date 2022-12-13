@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, DateTime, Time
+from sqlalchemy import Column, Integer, DateTime, Time, String
 from utils.db import db
 
 class Horario_Model(db.Model):
@@ -7,7 +7,7 @@ class Horario_Model(db.Model):
     id = Column(Integer, primary_key= True)
     idSemana = Column(Integer, db.ForeignKey('diaSemana.id'))
     idSalon = Column(Integer, db.ForeignKey('salon.id'))
-    idClase = Column(Integer, db.ForeignKey('Clase.nrc'))
+    nrc = Column(String(20), db.ForeignKey('Clase.nrc'))
     horaInicio = Column(Time)
     horaFin = Column(Time)
     createdAt = Column(DateTime)
