@@ -131,10 +131,11 @@ class Horarios(Resource):
         if horarioInicioCadena == horarioFinCadena:
             return response_template.bad_request(msg='No se puede iniciar y terminar en la misma hora')
 
-        horarios_models = db.session.execute(db.select(Horario_Model).filter(and_(Horario_Model.idSalon == args.idSalon ,Horario_Model.idSemana == args.idSemana))).scalars().fetchall()
+        statement = text("select hor.horaInicio, hor.horaFin FROM horario as hor INNER JOIN clase as clas INNER JOIN grupo as gru INNER JOIN Periodo as per WHERE clas.nrc = hor.idClase AND gru.id = clas.idGrupo AND per.id = gru.idPeriodo AND per.activo = 1 AND hor.idSalon = {} AND hor.idSemana = {}".format(args.idSalon, args.idSemana))
+        horarios_filtrados = db.session.execute(statement).fetchall()
         checarHorario = None
-        for horarioCoincidentes in horarios_models:
-            checarHorario = is_time_between(horarioCoincidentes.horaInicio, horarioCoincidentes.horaFin, horarioFinCadena, horarioInicioCadena)
+        for horarioCoincidentes in horarios_filtrados:
+            checarHorario = is_time_between(horarioCoincidentes[0], horarioCoincidentes[1], horarioFinCadena, horarioInicioCadena)
             if checarHorario:
                 return response_template.bad_request(msg='Hora no valido. Existe choque de horarios')
 
