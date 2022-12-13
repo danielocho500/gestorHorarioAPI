@@ -135,7 +135,7 @@ class Horarios(Resource):
         horarios_filtrados = db.session.execute(statement).fetchall()
         checarHorario = None
         for horarioCoincidentes in horarios_filtrados:
-            checarHorario = is_time_between(horarioCoincidentes[0], horarioCoincidentes[1], horarioFinCadena, horarioInicioCadena)
+            checarHorario = is_time_between(horarioCoincidentes[0],horarioCoincidentes[1], horarioFinCadena, horarioInicioCadena)
             if checarHorario:
                 return response_template.bad_request(msg='Hora no valido. Existe choque de horarios')
 
