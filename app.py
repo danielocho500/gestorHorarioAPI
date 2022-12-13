@@ -10,7 +10,7 @@ from controllers.Login import Login
 from controllers.Materia import Materia, Materias
 from controllers.Area import Area, Areas
 from controllers.DiaSemana import DiaSemana, DiasSemana
-from controllers.Horario import Horario, Horarios, HorariosSalon
+from controllers.Horario import Horario, Horarios, HorariosSalon, HorarioEstudiante, HorarioEstudianteToken, HorarioProfesor, HorarioProfesorToken
 from controllers.MateriaArea import MateriaArea, MateriaAreas, MateriasArea
 from controllers.Periodo import PeriodoActivo, Periodos, Periodo, PeriodoActivoPut
 from controllers.Grupo import Grupos, Grupo,GrupoEstudianteValido, GrupoEstudiante
@@ -52,6 +52,10 @@ api.add_resource(DiasSemana,"/api/diaSemana")
 api.add_resource(Horario, "/api/horario/<int:idHorario>")
 api.add_resource(Horarios,"/api/horario")
 api.add_resource(HorariosSalon, "/api/horario/salon/<int:idSalon>")
+api.add_resource(HorarioEstudiante, "/api/horario/estudiante/<int:idEstudiante>")
+api.add_resource(HorarioEstudianteToken, "/api/horario/estudiante")
+api.add_resource(HorarioProfesor, "/api/horario/profesor/<int:idProfesor>")
+api.add_resource(HorarioProfesorToken, "/api/horario/profesor")
 
 api.add_resource(MateriaArea, "/api/materiaArea/<int:idMateria>")
 api.add_resource(MateriaAreas, "/api/materiaArea")
