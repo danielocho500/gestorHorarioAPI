@@ -17,7 +17,7 @@ from jwt_functions import get_info_token
 
 horario_patch_args = reqparse.RequestParser()
 horario_patch_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
-horario_patch_args.add_argument("idClase", type=int, help= "Id de la clase", required = True)
+horario_patch_args.add_argument("nrc", type=str, help= "Nrc de la clase", required = True)
 horario_patch_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
 horario_patch_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
 horario_patch_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
@@ -40,7 +40,7 @@ class Horario(Resource):
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
-            'idClase': horario.idClase,
+            'nrc': horario.nrc,
             'horanicio': str(horario.horaInicio),
             'horaFin': str(horario.horaFin)
         }
@@ -64,7 +64,7 @@ class Horario(Resource):
             return response_template.not_found('El dia de la semana no fue encontrado')
 
         try:
-            db.get_or_404(Clase_Model, args.idClase)
+            db.get_or_404(Clase_Model, args.nrc)
         except:
             return response_template.not_found('Clase no encontrada')
 
@@ -86,7 +86,7 @@ class Horario(Resource):
 
         horario.idSemana = args.idSemana
         horario.idSalon = args.idSalon
-        horario.idClase = args.idClase
+        horario.nrc = args.nrc
         horario.horaInicio = args.horarioInicio
         horario.horaFin = args.horarioFin
         horario.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -118,7 +118,7 @@ class Horarios(Resource):
             return response_template.not_found('El dia de la semana no fue encontrado')
         
         try:
-            db.get_or_404(Clase_Model, args.idClase)
+            db.get_or_404(Clase_Model, args.nrc)
         except:
             return response_template.not_found('Clase no encontrada')
 
@@ -141,7 +141,7 @@ class Horarios(Resource):
         horario = Horario_Model(
             idSemana= args.idSemana,
             idSalon= args.idSalon,
-            idClase= args.idClase,
+            nrc= args.nrc,
             horaInicio = horarioInicioCadena,
             horaFin = horarioFinCadena,
             createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -161,7 +161,7 @@ class Horarios(Resource):
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
-            'idClase': horario.idClase,
+            'nrc': horario.nrc,
             'horaInicio': str(horario.horaInicio),
             'horaFin': str(horario.horaFin)
             })
