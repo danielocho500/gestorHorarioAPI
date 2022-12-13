@@ -24,7 +24,7 @@ horario_patch_args.add_argument("horarioFin", type=str, help="Horario de fin", r
 
 horario_post_args = reqparse.RequestParser()
 horario_post_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
-horario_post_args.add_argument("idClase", type=int, help= "Id de la clase", required = True)
+horario_post_args.add_argument("nrc", type=str, help= "Nrc de la clase", required = True)
 horario_post_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
 horario_post_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
 horario_post_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
