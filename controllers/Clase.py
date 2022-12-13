@@ -118,7 +118,7 @@ class Clase_maestro(Resource):
         except:
             return response_template.not_found('Token expirado')
 
-        statement = text("SELECT cl.nrc, mat.nombre, gru.semestre, gru.bloque FROM clase as cl INNER JOIN materia as mat INNER JOIN grupo as gru WHERE mat.id = cl.idMateria AND gru.id = cl.idGrupo AND cl.idProfesor = {};".format(idProfesor))
+        statement = text("SELECT cl.nrc, mat.nombre, gru.id, gru.semestre, gru.bloque FROM clase as cl INNER JOIN materia as mat INNER JOIN grupo as gru WHERE mat.id = cl.idMateria AND gru.id = cl.idGrupo AND cl.idProfesor = {};".format(idProfesor))
 
         grupos_maestro = db.session.execute(statement).fetchall()
         grupos = []
@@ -127,8 +127,9 @@ class Clase_maestro(Resource):
             grupos.append({
                 'nrc': grupo[0],
                 'Materia': grupo[1],
-                'Semestre': grupo[2],
-                'Bloque': grupo[3]
+                'idGrupo': grupo[2],
+                'Semestre': grupo[3],
+                'Bloque': grupo[4]
             })
 
         return response_template.succesful(grupos, "grupos encontrados", 200)

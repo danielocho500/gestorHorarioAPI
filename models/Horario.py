@@ -7,7 +7,7 @@ class Horario_Model(db.Model):
     id = Column(Integer, primary_key= True)
     idSemana = Column(Integer, db.ForeignKey('diaSemana.id'))
     idSalon = Column(Integer, db.ForeignKey('salon.id'))
-    nrc = Column(String(20), db.ForeignKey('Clase.nrc'))
+    idClase = Column(String(20), db.ForeignKey('Clase.nrc'))
     horaInicio = Column(Time)
     horaFin = Column(Time)
     createdAt = Column(DateTime)
