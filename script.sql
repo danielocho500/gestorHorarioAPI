@@ -916,7 +916,8 @@ WHERE cl.idProfesor = us.uid
 AND cl.idMAteria = mat.id
 AND mat.idArea = are.id
 AND cl.idGrupo = gru.id
-AND per.id = gru.idPeriodo;
+AND per.id = gru.idPeriodo
+AND per.activo = 1;
 
 create view calificacionesAlumno as
 SELECT 
@@ -938,3 +939,18 @@ AND clas.nrc = ac.nrc
 AND clas.idProfesor = prof.uid
 AND mat.id = clas.idMateria
 AND estgru.idGrupo = gru.id;
+
+create view estudianteSinCalificacion as 
+SELECT us.uid, concat(us.primerNombre, ' ' ,IFNULL(us.segundoNombre, ''), ' ', us.primerApellido, ' ', us.segundoApellido) as nombre
+FROM estudiantegrupo as estgru
+INNER JOIN grupo as gru
+INNER JOIN clase as cla
+INNER JOIN usuario as us
+WHERE gru.id = estgru.idGrupo
+AND cla.idGrupo = gru.id
+AND estgru.id NOT IN
+(SELECT estgru.id as estgruId
+FROM acta as act
+INNER JOIN estudiantegrupo as estgru
+WHERE act.idEstGrupo = estgru.id)
+AND us.uid = estgru.idEstudiante;
