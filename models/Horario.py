@@ -13,10 +13,10 @@ class Horario_Model(db.Model):
     createdAt = Column(DateTime)
     updatedAt = Column(DateTime)
 
-    def __init__(self, idSemana, idSalon, idClase,horaInicio, horaFin, createdAt, updatedAt):
+    def __init__(self, idSemana, idSalon, nrc,horaInicio, horaFin, createdAt, updatedAt):
         self.idSemana = idSemana
         self.idSalon = idSalon
-        self.idClase = idClase
+        self.nrc = nrc
         self.horaInicio = horaInicio
         self.horaFin = horaFin
         self.createdAt = createdAt
