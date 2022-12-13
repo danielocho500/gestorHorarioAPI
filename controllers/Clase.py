@@ -132,3 +132,23 @@ class Clase_maestro(Resource):
             })
 
         return response_template.succesful(grupos, "grupos encontrados", 200)
+    
+class Materias_validas(Resource):
+    def get(self, idGrupo):
+        try:
+            db.get_or_404(Grupo_Model, idGrupo)
+        except:
+            return response_template.not_found('Grupo no encontrado')
+
+        statement = text("SELECT mat.id, mat.nombre FROM grupo as gru INNER JOIN area as ar INNER JOIN materia as mat WHERE gru.idArea = ar.id AND ar.id = mat.idArea AND mat.id NOT IN (SELECT cla.idMateria FROM clase as cla WHERE cla.idGrupo = {}) AND gru.id = {};".format(idGrupo, idGrupo))
+
+        materias_filtradas = db.session.execute(statement).fetchall()
+        materias = []
+
+        for materia in materias_filtradas:
+            materias.append({
+                'id': materia[0],
+                'nombre': materia[1]
+            })
+
+        return response_template.succesful(materias, "materias validas", 200)

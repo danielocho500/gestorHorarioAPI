@@ -13,8 +13,11 @@ class Acta_Model(db.Model):
     createdAt = Column(DateTime)
     updatedAt = Column(DateTime)
 
-    def __init__(self, nombre, semestre, createdAt, updatedAt):
-        self.nombre = nombre
-        self.semestre = semestre
+    def __init__(self, idEstGrupo,nrc,esFinal, calificacion, esOrdinario, createdAt, updatedAt):
+        self.idEstGrupo = idEstGrupo
+        self.nrc = nrc
+        self.esFinal = esFinal
+        self.calificacion = calificacion
+        self.esOrdinario = esOrdinario
         self.createdAt = createdAt
         self.updatedAt = updatedAt
