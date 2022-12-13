@@ -9,6 +9,7 @@ from models.Horario import Horario_Model
 from models.DiaSemana import DiaSemana_Model
 from models.Salon import Salon_Model
 from models.Usuario import Usuario_Model
+from models.Clase import Clase_Model
 from utils.db import db
 from utils.response_template import response_template
 from jwt_functions.validate_jwt import validate_jwt
@@ -16,12 +17,14 @@ from jwt_functions import get_info_token
 
 horario_patch_args = reqparse.RequestParser()
 horario_patch_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
+horario_patch_args.add_argument("idClase", type=int, help= "Id de la clase", required = True)
 horario_patch_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
 horario_patch_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
 horario_patch_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
 
 horario_post_args = reqparse.RequestParser()
 horario_post_args.add_argument("idSemana", type=int, help="Id de la semana", required = True)
+horario_post_args.add_argument("idClase", type=int, help= "Id de la clase", required = True)
 horario_post_args.add_argument("idSalon", type=int, help="Id del salon", required = True)
 horario_post_args.add_argument("horarioInicio", type=str, help="Horario de inicio", required = True)
 horario_post_args.add_argument("horarioFin", type=str, help="Horario de fin", required = True)
@@ -37,6 +40,7 @@ class Horario(Resource):
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
+            'idClase': horario.idClase,
             'horanicio': str(horario.horaInicio),
             'horaFin': str(horario.horaFin)
         }
@@ -59,6 +63,11 @@ class Horario(Resource):
         except:
             return response_template.not_found('El dia de la semana no fue encontrado')
 
+        try:
+            db.get_or_404(Clase_Model, args.idClase)
+        except:
+            return response_template.not_found('Clase no encontrada')
+
         if not(regexTime(args.horarioInicio) and regexTime(args.horarioFin)):
             return response_template.bad_request(msg='Horario incorrecto')
     
@@ -77,6 +86,7 @@ class Horario(Resource):
 
         horario.idSemana = args.idSemana
         horario.idSalon = args.idSalon
+        horario.idClase = args.idClase
         horario.horaInicio = args.horarioInicio
         horario.horaFin = args.horarioFin
         horario.updatedAt = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -106,6 +116,11 @@ class Horarios(Resource):
             db.get_or_404(DiaSemana_Model, args.idSemana)
         except:
             return response_template.not_found('El dia de la semana no fue encontrado')
+        
+        try:
+            db.get_or_404(Clase_Model, args.idClase)
+        except:
+            return response_template.not_found('Clase no encontrada')
 
         if not(regexTime(args.horarioInicio) and regexTime(args.horarioFin)):
             return response_template.bad_request(msg='Formato de hora incorrecto')
@@ -126,6 +141,7 @@ class Horarios(Resource):
         horario = Horario_Model(
             idSemana= args.idSemana,
             idSalon= args.idSalon,
+            idClase= args.idClase,
             horaInicio = horarioInicioCadena,
             horaFin = horarioFinCadena,
             createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -145,6 +161,7 @@ class Horarios(Resource):
             'idHorario' : horario.id,
             'idSemana': horario.idSemana,
             'idSalon': horario.idSalon,
+            'idClase': horario.idClase,
             'horaInicio': str(horario.horaInicio),
             'horaFin': str(horario.horaFin)
             })
