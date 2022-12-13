@@ -93,7 +93,7 @@ class CalificacionToken(Resource):
         }, msg='', code=200)
 
 Calificacion_post_args = reqparse.RequestParser()
-Calificacion_post_args.add_argument("idEstGrupo", type=int, help="idEstGrupo", required = True)
+Calificacion_post_args.add_argument("idEstudiante", type=int, help="idEstGrupo", required = True)
 Calificacion_post_args.add_argument("calificacion", type=int, help="calificacion", required = True)
 
 
@@ -139,18 +139,22 @@ class CalificacionClase(Resource):
             return response_template.not_found('La clase no fue encontrada')
 
         try:
-            db.get_or_404(estudianteGrupo_Model, args.idEstGrupo)
+            db.get_or_404(Usuario_Model, args.idEstudiante)
         except:
-            return response_template.not_found('No hay relacion de estudiante y la materia')
+            return response_template.not_found('No se encontro el estudiante')
 
         if not (args.calificacion >= 5 and args.calificacion<= 10):
             return response_template.bad_request('La calificacion debe estar entre 5 y 10')
         
+        statement = text("select estgru.id from Usuario as us INNER JOIN estudiantegrupo as estgru INNER JOIN grupo as gru INNER JOIN clase as cla WHERE estgru.idEstudiante = us.uid AND estgru.idGrupo = gru.id AND cla.idGrupo = gru.id AND us.uid={} AND nrc={};".format(args.idEstudiante, nrc))
+
+        idEstgru = db.session.execute(statement).fetchall()[0][0]
+
         acta = Acta_Model(
             esOrdinario=0,
             esFinal=0,
             calificacion=args.calificacion,
-            idEstGrupo=args.idEstGrupo,
+            idEstGrupo=idEstgru,
             nrc=nrc,
             createdAt=time.strftime('%Y-%m-%d %H:%M:%S'),
             updatedAt=time.strftime('%Y-%m-%d %H:%M:%S')
