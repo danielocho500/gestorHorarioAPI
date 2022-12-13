@@ -176,7 +176,7 @@ class HorariosSalon(Resource):
         except:
             return response_template.not_found('El salon no fue encontrado')
 
-        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin, concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor, mat.nombre, gru.semestre, gru.bloque FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND hor.idSalon = {} ORDER BY hor.horaInicio ASC;".format(idSalon))
+        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin,  concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor,  mat.nombre, gru.semestre, gru.bloque  FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN periodo as per WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND gru.idPeriodo = per.id AND per.activo = 1 AND hor.idSalon = {} ORDER BY hor.horaInicio ASC;".format(idSalon))
 
         horarios_filtrados = db.session.execute(statement).fetchall()
         horarios = {1:[], 2:[], 3:[], 4:[], 5:[] }
@@ -207,7 +207,7 @@ class HorarioEstudiante(Resource):
         except:
             return response_template.not_found('El estudiante no fue encontrado')
 
-        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin, concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor, mat.nombre, sal.nombre as salon, edi.nombre as edificio FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN estudiantegrupo as estgru INNER JOIN usuario as us INNER JOIN salon as sal INNER JOIN edificio as edi WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND estgru.idGrupo = gru.id AND estgru.idEstudiante = us.uid AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND us.uid = {} ORDER BY hor.horaInicio ASC;".format(idEstudiante))
+        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin, concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor, mat.nombre, sal.nombre as salon, edi.nombre as edificio FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN estudiantegrupo as estgru INNER JOIN usuario as us INNER JOIN salon as sal INNER JOIN edificio as edi INNER JOIN periodo as per WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND estgru.idGrupo = gru.id AND estgru.idEstudiante = us.uid AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND per.id = gru.idPeriodo AND per.activo = 1 AND us.uid = {} ORDER BY hor.horaInicio ASC;".format(idEstudiante))
 
         horarios_filtrados = db.session.execute(statement).fetchall()
         horarios = {1:[], 2:[], 3:[], 4:[], 5:[] }
@@ -252,7 +252,7 @@ class HorarioEstudianteToken(Resource):
         except:
             return response_template.not_found('El salon no fue encontrado')
 
-        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin, concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor, mat.nombre, sal.nombre as salon, edi.nombre as edificio FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN estudiantegrupo as estgru INNER JOIN usuario as us INNER JOIN salon as sal INNER JOIN edificio as edi WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND estgru.idGrupo = gru.id AND estgru.idEstudiante = us.uid AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND us.uid = {} ORDER BY hor.horaInicio ASC;".format(idEstudiante))
+        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin, concat(prof.primerNombre, ' ' ,IFNULL(prof.segundoNombre, ''), ' ', prof.primerApellido, ' ', prof.segundoApellido) as nombreProfesor, mat.nombre, sal.nombre as salon, edi.nombre as edificio FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN estudiantegrupo as estgru INNER JOIN usuario as us INNER JOIN salon as sal INNER JOIN edificio as edi INNER JOIN periodo as per WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND estgru.idGrupo = gru.id AND estgru.idEstudiante = us.uid AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND per.id = gru.idPeriodo AND per.activo = 1 AND us.uid = {} ORDER BY hor.horaInicio ASC;".format(idEstudiante))
 
         horarios_filtrados = db.session.execute(statement).fetchall()
         horarios = {1:[], 2:[], 3:[], 4:[], 5:[] }
@@ -284,7 +284,7 @@ class HorarioProfesor(Resource):
         except:
             return response_template.not_found('El profesor no fue encontrado')
 
-        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin,  mat.nombre, sal.nombre as salon, edi.nombre as edificio, gru.semestre, gru.bloque FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN salon as sal INNER JOIN edificio as edi WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND prof.uid = {} ORDER BY hor.horaInicio ASC;".format(idProfesor))
+        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin,  mat.nombre, sal.nombre as salon, edi.nombre as edificio, gru.semestre, gru.bloque FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN salon as sal INNER JOIN edificio as edi INNER JOIN periodo as per WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND gru.idPeriodo = per.id AND per.activo = 1 AND prof.uid = {} ORDER BY hor.horaInicio ASC;".format(idProfesor))
 
         horarios_filtrados = db.session.execute(statement).fetchall()
         horarios = {1:[], 2:[], 3:[], 4:[], 5:[] }
@@ -330,7 +330,7 @@ class HorarioProfesorToken(Resource):
         except:
             return response_template.not_found('El salon no fue encontrado')
 
-        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin,  mat.nombre, sal.nombre as salon, edi.nombre as edificio, gru.semestre, gru.bloque FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN salon as sal INNER JOIN edificio as edi WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND prof.uid = {} ORDER BY hor.horaInicio ASC;".format(idProfesor))
+        statement = text("SELECT hor.idSemana, hor.idClase, hor.horaInicio, hor.horaFin,  mat.nombre, sal.nombre as salon, edi.nombre as edificio, gru.semestre, gru.bloque FROM horario as hor INNER JOIN clase as cla INNER JOIN usuario as prof INNER JOIN materia as mat INNER JOIN grupo as gru INNER JOIN salon as sal INNER JOIN edificio as edi INNER JOIN periodo as per WHERE cla.nrc = hor.idClase AND prof.uid = cla.idProfesor AND cla.idMateria = mat.id AND gru.id = cla.idGrupo AND sal.id = hor.idSalon AND edi.id = sal.idEdificio AND gru.idPeriodo = per.id AND per.activo = 1 AND prof.uid = {} ORDER BY hor.horaInicio ASC;".format(idProfesor))
 
         horarios_filtrados = db.session.execute(statement).fetchall()
         horarios = {1:[], 2:[], 3:[], 4:[], 5:[] }
